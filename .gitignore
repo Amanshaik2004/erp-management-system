@@ -1,0 +1,29 @@
+# Virtual Environment
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Logs
+logs/
+*.log
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Alembic cache
+alembic/__pycache__/
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
