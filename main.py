@@ -8,6 +8,7 @@ from routers.designation_router import router as designation_router
 from routers.employee_router import router as employee_router
 from routers.attendance_router import router as attendance_router
 from routers.leave_router import router as leave_router
+from routers.payroll_router import router as payroll_router
 
 
 app = FastAPI(
@@ -20,6 +21,7 @@ app.include_router(designation_router)
 app.include_router(employee_router)
 app.include_router(attendance_router)
 app.include_router(leave_router)
+app.include_router(payroll_router)
 
 @app.get("/profile")
 def profile(
