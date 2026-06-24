@@ -11,3 +11,4 @@ from .supplier import Supplier
 from .product import Product
 from .inventory import Inventory
 from .customer import Customer
+from .sales_order import SalesOrder
