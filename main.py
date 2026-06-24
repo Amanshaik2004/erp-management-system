@@ -6,6 +6,7 @@ from services.security_service import get_current_user
 from routers.department_router import router as department_router
 from routers.designation_router import router as designation_router
 from routers.employee_router import router as employee_router
+from routers.attendance_router import router as attendance_router
 
 
 app = FastAPI(
@@ -16,6 +17,7 @@ app.include_router(auth_router)
 app.include_router(department_router)
 app.include_router(designation_router)
 app.include_router(employee_router)
+app.include_router(attendance_router)
 
 @app.get("/profile")
 def profile(
