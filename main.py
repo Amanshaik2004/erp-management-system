@@ -12,6 +12,7 @@ from routers.payroll_router import router as payroll_router
 from routers.category_router import router as category_router
 from routers.supplier_router import router as supplier_router
 from routers.product_router import router as product_router
+from routers.inventory_router import router as inventory_router
 
 
 app = FastAPI(
@@ -28,6 +29,7 @@ app.include_router(payroll_router)
 app.include_router(category_router)
 app.include_router(supplier_router)
 app.include_router(product_router)
+app.include_router(inventory_router)
 
 @app.get("/profile")
 def profile(
