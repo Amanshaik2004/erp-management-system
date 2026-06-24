@@ -6,3 +6,4 @@ from .employee import Employee
 from .attendance import Attendance
 from .leave_request import LeaveRequest
 from .payroll import Payroll
+from .category import Category
