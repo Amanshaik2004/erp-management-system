@@ -15,6 +15,20 @@ from routers.product_router import router as product_router
 from routers.inventory_router import router as inventory_router
 from routers.customer_router import router as customer_router
 from routers.sales_order_router import router as sales_order_router
+from routers.sales_order_item_router import router as sales_order_item_router
+from routers.invoice_router import router as invoice_router
+from routers.dashboard_router import router as dashboard_router
+from routers.salary_structure_router import router as salary_structure_router
+from routers.payslip_router import router as payslip_router
+from routers.project_router import router as project_router
+from routers.project_task_router import router as project_task_router
+from routers.timesheet_router import router as timesheet_router
+from routers.client_router import router as client_router
+from routers.lead_router import router as lead_router
+from routers.opportunity_router import router as opportunity_router
+from routers.ticket_router import router as ticket_router
+from routers.notification_router import router as notification_router
+from routers.reports_router import router as reports_router
 
 
 app = FastAPI(
@@ -34,6 +48,21 @@ app.include_router(product_router)
 app.include_router(inventory_router)
 app.include_router(customer_router)
 app.include_router(sales_order_router)
+app.include_router(sales_order_item_router)
+app.include_router(invoice_router)
+app.include_router(dashboard_router)
+app.include_router(salary_structure_router)
+app.include_router(payslip_router)
+app.include_router(project_router)
+app.include_router(project_task_router)
+app.include_router(timesheet_router)
+app.include_router(client_router)
+app.include_router(lead_router)
+app.include_router(opportunity_router)
+app.include_router(ticket_router)
+app.include_router(notification_router)
+app.include_router(reports_router)
+
 
 @app.get("/profile")
 def profile(

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-
+from fastapi import BackgroundTasks
 from database import get_db
 
 from schemas.leave_request import (
@@ -39,15 +39,17 @@ def get_one(
 
 
 @router.put("/{leave_id}", response_model=LeaveRequestResponse)
-def update(
+def update_leave(
     leave_id: int,
     leave: LeaveRequestUpdate,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db)
 ):
     return update_leave(
-        leave_id,
-        leave,
-        db
+    leave_id,
+    leave,
+    db,
+    background_tasks
     )
 
 

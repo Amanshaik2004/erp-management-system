@@ -8,7 +8,7 @@ from schemas.employee import EmployeeUpdate
 
 from services.employee_service import (
     create_employee,
-    get_all_employees,
+    get_all_employees_service,
     get_employee_by_id,
     update_employee,
     delete_employee
@@ -27,11 +27,29 @@ def create(
 ):
     return create_employee(employee, db)
 
-@router.get("/", response_model=list[EmployeeResponse])
-def get_all(
+from typing import Optional
+
+@router.get(
+    "/",
+    response_model=list[EmployeeResponse]
+)
+def get_all_employees(
+    search: str | None = None,
+    page: int = 1,
+    size: int = 10,
+    department_id: int | None = None,
+    designation_id: int | None = None,
     db: Session = Depends(get_db)
 ):
-    return get_all_employees(db)
+
+    return get_all_employees_service(
+        db,
+        search,
+        page,
+        size,
+        department_id,
+        designation_id
+    )
 
 
 @router.get("/{employee_id}", response_model=EmployeeResponse)

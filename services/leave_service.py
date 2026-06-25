@@ -1,5 +1,7 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
+from services.email_service import send_email
+from fastapi import BackgroundTasks
 
 from models.employee import Employee
 from models.leave_request import LeaveRequest
@@ -50,7 +52,8 @@ def get_leave_by_id(leave_id: int, db: Session):
 def update_leave(
     leave_id: int,
     leave_data: LeaveRequestUpdate,
-    db: Session
+    db: Session,
+    background_tasks: BackgroundTasks
 ):
 
     leave = (
@@ -68,6 +71,25 @@ def update_leave(
     db.commit()
     db.refresh(leave)
 
+    employee = db.query(Employee).filter(
+    Employee.id == leave.employee_id).first()
+
+    if leave.status == "APPROVED":
+
+        send_email(
+        to_email=employee.email,
+        subject="Leave Approved",
+        message="Your leave request has been approved."
+        )
+
+    elif leave.status == "REJECTED":
+
+     background_tasks.add_task(
+    send_email,
+    employee.email,
+    "Leave Approved",
+    "Your leave request has been approved."
+    )
     return leave
 
 

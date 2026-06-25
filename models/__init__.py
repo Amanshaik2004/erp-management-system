@@ -12,3 +12,14 @@ from .product import Product
 from .inventory import Inventory
 from .customer import Customer
 from .sales_order import SalesOrder
+from .sales_order_item import SalesOrderItem
+from .invoice import Invoice
+from .salary_structure import SalaryStructure
+from .project import Project
+from .project_task import ProjectTask
+from .timesheet import Timesheet
+from .client import Client
+from .lead import Lead
+from .opportunity import Opportunity
+from .ticket import Ticket
+from .notification import Notification
